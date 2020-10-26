@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  courierService:
+    network_mode: bridge
+    container_name: courierservice
+    image: mpinchuk/courierservice:latest
+    build: ./
+    ports:
+      - "8082:8082"
+    environment:
+      - POSTGRES_PASSWORD=4526357
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=courierservice
+      - DB_SERVER=postgresqldb-courier
+    links:
+      - postgresqldb-courier
+
+
+  postgresqldb-courier:
+    network_mode: bridge
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=4526357
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=courierservice
+    volumes:
+      - postgres-data-courier:D:\Max\projects\A3\volumes\courier
+
+volumes:
+  postgres-data-courier:
