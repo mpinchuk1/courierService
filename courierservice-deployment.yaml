@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: courierservice
+  name: courierservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: courierservice
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: courierservice
+    spec:
+      containers:
+      - env:
+        - name: DB_SERVER
+          value: postgresqldb-courier
+        - name: POSTGRES_DB
+          value: courierservice
+        - name: POSTGRES_PASSWORD
+          value: "4526357"
+        - name: POSTGRES_USER
+          value: postgres
+        image: mpinchuk/courierservice:latest
+        imagePullPolicy: ""
+        name: courierservice
+        ports:
+        - containerPort: 8082
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: postgres-data-courier
+        persistentVolumeClaim:
+          claimName: postgres-data-courier
+status: {}
