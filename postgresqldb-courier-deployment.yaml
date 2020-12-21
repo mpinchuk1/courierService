@@ -1,27 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.21.0 (992df58d8)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: postgresqldb-courier
   name: postgresqldb-courier
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: postgresqldb-courier
-  strategy: {}
+      app: postgresqldb-courier
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.21.0 (992df58d8)
-      creationTimestamp: null
       labels:
-        io.kompose.service: postgresqldb-courier
+        app: postgresqldb-courier
     spec:
       containers:
       - env:
@@ -36,12 +25,3 @@ spec:
         name: postgresqldb-courier
         ports:
         - containerPort: 5432
-        resources: {}
-      restartPolicy: Always
-      serviceAccountName: ""
-      volumes:
-      - name: postgres-data-courier
-        persistentVolumeClaim:
-          claimName: postgres-data-courier
-
-status: {}

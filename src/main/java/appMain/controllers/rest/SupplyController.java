@@ -1,4 +1,4 @@
-package appMain.controllers;
+package appMain.controllers.rest;
 
 import appMain.entities.Courier;
 import appMain.entities.Product;

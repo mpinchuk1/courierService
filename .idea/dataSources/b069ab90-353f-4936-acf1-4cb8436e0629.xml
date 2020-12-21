@@ -910,16 +910,19 @@ true posixrules
     <language id="25" parent="2" name="sql"/>
     <table id="26" parent="14" name="courier">
       <ObjectId>52645</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>23637</StateNumber>
     </table>
     <table id="27" parent="14" name="product">
       <ObjectId>52653</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>23638</StateNumber>
     </table>
     <table id="28" parent="14" name="storage">
       <ObjectId>52658</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>23638</StateNumber>
     </table>

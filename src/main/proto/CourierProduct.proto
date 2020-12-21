@@ -1,0 +1,29 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package org.appMain;
+
+message ProtoProduct {
+  string name = 1;
+  double price = 2;
+}
+
+message GetRequestProduct{
+}
+
+message GetResponseProduct {
+  repeated ProtoProduct items = 1;
+}
+
+
+message DeliverProductsRequest{
+  string serveJson = 1;
+}
+
+message DeliverProductsResponse {
+}
+
+
+service supplierService {
+  rpc getProducts(GetRequestProduct) returns (GetResponseProduct);
+  rpc deliverProducts(DeliverProductsRequest) returns (DeliverProductsResponse);
+}
